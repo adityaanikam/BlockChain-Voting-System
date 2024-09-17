@@ -4,28 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
     <list default="true" id="2ff820fa-3123-43be-a692-a79961f5929c" name="Changes" comment="block chain system first commit" />
-=======
-    <list default="true" id="2ff820fa-3123-43be-a692-a79961f5929c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/blockchainvoting/Block.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/blockchainvoting/Blockchain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/blockchainvoting/VoterRegistration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/blockchainvoting/VotingApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/blockchainvoting/hello-view.fxml" afterDir="false" />
-    </list>
->>>>>>> 6539ad1557721f499e57d578f03a82981f6cf265
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,11 +21,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-<<<<<<< HEAD
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-  }
-}]]></component>
   <component name="GithubPullRequestsUISettings">
     <option name="recentNewPullRequestHead">
       <RepoCoordinatesHolder>
@@ -61,11 +35,6 @@
       </UrlAndAccount>
     </option>
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-=======
->>>>>>> 6539ad1557721f499e57d578f03a82981f6cf265
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -73,46 +42,27 @@
       </MavenGeneralSettings>
     </option>
   </component>
-<<<<<<< HEAD
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 6
-}</component>
-=======
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
->>>>>>> 6539ad1557721f499e57d578f03a82981f6cf265
+  <component name="ProjectColorInfo">
+    <option name="associatedIndex" value="6" />
+  </component>
   <component name="ProjectId" id="2lQrxfwMALbNvw6kTsZCwrWFHYr" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-<<<<<<< HEAD
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.VotingApp.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/adity/Downloads/springbootfirstp&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
-  }
-}</component>
-=======
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.VotingApp.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true"
-  }
-}]]></component>
->>>>>>> 6539ad1557721f499e57d578f03a82981f6cf265
+  <component name="PropertiesComponent">
+    <option name="keyToString">
+      <map>
+        <entry key="Application.VotingApp.executor" value="Run" />
+        <entry key="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+        <entry key="RunOnceActivity.ShowReadmeOnStart" value="true" />
+        <entry key="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+        <entry key="git-widget-placeholder" value="master" />
+        <entry key="kotlin-language-version-configured" value="true" />
+      </map>
+    </option>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -129,7 +79,6 @@
       <option name="presentableId" value="Default" />
       <updated>1725123389232</updated>
     </task>
-<<<<<<< HEAD
     <task id="LOCAL-00001" summary="block chain system first commit">
       <option name="closed" value="true" />
       <created>1725881041955</created>
@@ -145,8 +94,4 @@
     <MESSAGE value="block chain system first commit" />
     <option name="LAST_COMMIT_MESSAGE" value="block chain system first commit" />
   </component>
-=======
-    <servers />
-  </component>
->>>>>>> 6539ad1557721f499e57d578f03a82981f6cf265
 </project>
