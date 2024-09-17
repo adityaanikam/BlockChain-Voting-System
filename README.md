@@ -24,30 +24,30 @@ IntelliJ IDEA (or any Java-supported IDE)
 JavaFX SDK installed and configured (for JavaFX projects)
 
 # Installation
-Clone the repository:
-
-bash
-
+1 Clone the repository:
 git clone https://github.com/adityaanikam/blockchain-voting-system.git
-cd blockchain-voting-system
-Configure JavaFX in your IDE:
+cd Blockchain-Voting-System
 
+2 Configure JavaFX in your IDE:
 If using IntelliJ IDEA:
 Go to File -> Project Structure -> Libraries -> + (Add JavaFX library).
 Add the path to your JavaFX SDK.
-Run the project:
 
+3 Run the project:
 After setting up the JavaFX library, you can run the project in your IDE.
 The main entry point of the application is the VotingApp class.
+
 How to Use
 Voter Registration
 When the application starts, voters can either register using their voter ID or log in directly if already registered.
 A voter registration form is available where users can enter their voter ID to register themselves.
+
 Voting Process
 Enter a valid voter ID to log in.
 Select a candidate from the list of available candidates.
 Cast your vote, which will be recorded as a block in the blockchain.
 After casting the vote, a success message will be displayed.
+
 Blockchain Structure
 Every vote is stored in a blockchain block.
 The system checks if the chain is valid and immutable after every vote.
