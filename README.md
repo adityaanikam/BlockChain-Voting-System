@@ -26,7 +26,7 @@ JavaFX SDK installed and configured (for JavaFX projects)
 # Installation
 1 Clone the repository:
 git clone https://github.com/adityaanikam/blockchain-voting-system.git
-cd Blockchain-Voting-System
+cd BlockChain-Voting-System
 
 2 Configure JavaFX in your IDE:
 If using IntelliJ IDEA:
