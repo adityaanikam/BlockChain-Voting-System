@@ -51,3 +51,22 @@ Blockchain Structure
 - Every vote is stored in a blockchain block.
 - The system checks if the chain is valid and immutable after every vote.
 - A simple Proof-of-Stake (PoS) consensus is used to validate blocks.
+
+# License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+# Contributing
+If you'd like to contribute, please fork the repository and submit a pull request. We welcome all improvements and suggestions!
+
+
+#Acknowledgments
+- Inspired by blockchain technology and its potential to revolutionize secure voting.
+- JavaFX documentation and community resources for the GUI implementation.
+
+### Contact
+
+For any queries, suggestions, or contributions, feel free to reach out to me:
+
+**Email:** [adityanikam033@gmail.com](mailto:adityanikam033@gmail.com)
+
+  
