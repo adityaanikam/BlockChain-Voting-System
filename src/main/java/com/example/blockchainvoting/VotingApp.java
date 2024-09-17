@@ -105,7 +105,8 @@ public class VotingApp extends Application {
 
         // Scene with Styling
         Scene scene = new Scene(root, 500, 500);
-        scene.getStylesheets().add("file:styles.css");  // External CSS for advanced styling (create styles.css)
+       scene.getStylesheets().add(getClass().getResource("/com/example/blockchainvoting/styles.css").toExternalForm());
+ // External CSS for advanced styling (create styles.css)
 
         primaryStage.setScene(scene);
         primaryStage.show();
