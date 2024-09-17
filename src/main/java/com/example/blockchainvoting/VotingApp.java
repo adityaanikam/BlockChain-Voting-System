@@ -8,18 +8,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-<<<<<<< HEAD
 import javafx.scene.text.Font;
 import javafx.scene.paint.Color;
-
-=======
->>>>>>> 6539ad1557721f499e57d578f03a82981f6cf265
 
 public class VotingApp extends Application {
 
     private VoterRegistration voterRegistration = new VoterRegistration();
 
-<<<<<<< HEAD
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Blockchain Voting System");
@@ -44,36 +39,11 @@ public class VotingApp extends Application {
         topBanner.setStyle("-fx-background-color: #ecf0f1;");
 
         // Center Grid for Voting Form
-=======
-        @Override
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("Blockchain Voting System");
-
-        // Top Banner with Image
-        HBox topBanner = new HBox();
-        topBanner.setPadding(new Insets(10));
-        topBanner.setStyle("-fx-background-color: #2c3e50;");
-
-        ImageView logo = new ImageView(new Image("file:logo.png")); // Add your logo image
-        logo.setFitHeight(50);
-        logo.setFitWidth(50);
-        Label title = new Label("Blockchain Voting System");
-        title.setStyle("-fx-font-size: 20px; -fx-text-fill: white;");
-        HBox.setHgrow(title, Priority.ALWAYS);
-        title.setPadding(new Insets(10, 0, 0, 10));
-
-        topBanner.getChildren().addAll(logo, title);
-
-        // Center Content
->>>>>>> 6539ad1557721f499e57d578f03a82981f6cf265
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(20));
         grid.setVgap(10);
         grid.setHgap(10);
-<<<<<<< HEAD
         grid.setStyle("-fx-background-color: #ecf0f1;");
-=======
->>>>>>> 6539ad1557721f499e57d578f03a82981f6cf265
 
         Label voterIdLabel = new Label("Voter ID:");
         TextField voterIdField = new TextField();
@@ -83,10 +53,7 @@ public class VotingApp extends Application {
         ComboBox<String> candidateChoice = new ComboBox<>();
         candidateChoice.getItems().addAll("Candidate A", "Candidate B", "Candidate C");
 
-<<<<<<< HEAD
         // Submit Button with Styling
-=======
->>>>>>> 6539ad1557721f499e57d578f03a82981f6cf265
         Button submitButton = new Button("Vote");
         submitButton.setStyle("-fx-background-color: #27ae60; -fx-text-fill: white;");
         submitButton.setTooltip(new Tooltip("Click to cast your vote"));
@@ -130,24 +97,16 @@ public class VotingApp extends Application {
 
         bottomSection.getChildren().add(checkBlockchain);
 
-<<<<<<< HEAD
         // Main Layout using BorderPane
-=======
->>>>>>> 6539ad1557721f499e57d578f03a82981f6cf265
         BorderPane root = new BorderPane();
         root.setTop(topBanner);
         root.setCenter(grid);
         root.setBottom(bottomSection);
 
-<<<<<<< HEAD
         // Scene with Styling
         Scene scene = new Scene(root, 500, 500);
-        scene.getStylesheets().add(getClass().getResource("/com/example/blockchainvoting/styles.css").toExternalForm());
-        // External CSS for advanced styling (create styles.css)
+        scene.getStylesheets().add("file:styles.css");  // External CSS for advanced styling (create styles.css)
 
-=======
-        Scene scene = new Scene(root, 400, 300);
->>>>>>> 6539ad1557721f499e57d578f03a82981f6cf265
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -157,8 +116,3 @@ public class VotingApp extends Application {
         launch(args);
     }
 }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 6539ad1557721f499e57d578f03a82981f6cf265
