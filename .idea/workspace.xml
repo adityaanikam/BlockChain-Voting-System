@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ff820fa-3123-43be-a692-a79961f5929c" name="Changes" comment="block chain system first commit">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/blockchainvoting/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/blockchainvoting/VoterRegistration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/blockchainvoting/VoterRegistration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/blockchainvoting/VotingApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/blockchainvoting/VotingApp.java" afterDir="false" />
-    </list>
+    <list default="true" id="2ff820fa-3123-43be-a692-a79961f5929c" name="Changes" comment="block chain system first commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,6 +20,24 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="recentNewPullRequestHead">
+      <RepoCoordinatesHolder>
+        <option name="owner" value="adityaanikam" />
+        <option name="repository" value="BlockChain-Voting-System" />
+      </RepoCoordinatesHolder>
+    </option>
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="02656969-de5b-4029-98eb-b179ac7122f2" />
+        <option name="url" value="https://github.com/adityaanikam/BlockChain-Voting-System.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
