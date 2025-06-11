@@ -10,15 +10,18 @@ WORKDIR /workspace
 COPY ["pom.xml", "mvnw", "./"]
 COPY .mvn .mvn
 
-# Pull down dependencies (no sources yet)
-RUN ./mvnw -B dependency:go-offline
+# Make mvnw executable
+RUN chmod +x ./mvnw
+
+# Pull down dependencies (no sources yet) - use system Maven as fallback
+RUN ./mvnw -B dependency:go-offline || mvn -B dependency:go-offline
 
 # Copy the rest of the source code
 COPY src src
 
 # Build the fat-jar (default profile = backend-only; override with --build-arg)
 ARG MAVEN_PROFILE=backend-only
-RUN ./mvnw -B clean package -P ${MAVEN_PROFILE} -DskipTests
+RUN ./mvnw -B clean package -P ${MAVEN_PROFILE} -DskipTests || mvn -B clean package -P ${MAVEN_PROFILE} -DskipTests
 
 # -------- Stage 1 : Runtime (Spring Boot + optional JavaFX) ---------
 # Using Ubuntu-based Temurin image that exists and supports apt-get
