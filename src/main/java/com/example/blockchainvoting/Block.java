@@ -46,7 +46,6 @@ public class Block {
             throw new RuntimeException(e);
         }
     }
-<<<<<<< HEAD
 
     // Getter methods for API access
     public String getData() {
@@ -60,6 +59,4 @@ public class Block {
     public int getNonce() {
         return nonce;
     }
-=======
->>>>>>> 8182c09528479f3a460c27028fa1c3125e8e78aa
 }

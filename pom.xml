@@ -24,6 +24,7 @@
         <javafx.version>17</javafx.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <javafx.platform>${os.detected.classifier}</javafx.platform>
     </properties>
 
     <dependencies>
@@ -151,6 +152,20 @@
                         <configuration>
                             <mainClass>com.example.blockchainvoting.JavaFXVotingApp</mainClass>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Add os-maven-plugin for platform detection -->
+            <plugin>
+                <groupId>kr.motd.maven</groupId>
+                <artifactId>os-maven-plugin</artifactId>
+                <version>1.7.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>detect</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
