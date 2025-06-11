@@ -1,71 +1,69 @@
 # Multi-stage Dockerfile for Blockchain Voting System
-# Stage 1: Build stage
-FROM openjdk:17-jdk-slim as builder
+# -------- Stage 0 : Build (Maven + JDK) -----------------------------
+# Using the official Maven image that already contains Temurin 17 JDK
+FROM maven:3.9.7-eclipse-temurin-17 AS builder
 
-# Install Maven
-RUN apt-get update && apt-get install -y maven
+# Enable faster dependency resolution caching
+WORKDIR /workspace
 
-# Set working directory
-WORKDIR /app
-
-# Copy Maven files first for dependency caching
-COPY pom.xml .
-COPY mvnw .
+# Copy pom and Maven wrapper first (leverages Docker cache)
+COPY ["pom.xml", "mvnw", "./"]
 COPY .mvn .mvn
 
-# Download dependencies
-RUN mvn dependency:go-offline -B
+# Pull down dependencies (no sources yet)
+RUN ./mvnw -B dependency:go-offline
 
-# Copy source code
+# Copy the rest of the source code
 COPY src src
 
-# Build the application (backend-only profile for Render)
-RUN mvn clean package -P backend-only -DskipTests
+# Build the fat-jar (default profile = backend-only; override with --build-arg)
+ARG MAVEN_PROFILE=backend-only
+RUN ./mvnw -B clean package -P ${MAVEN_PROFILE} -DskipTests
 
-# Stage 2: Runtime stage for backend-only deployment
-FROM openjdk:17-jre-slim as backend
+# -------- Stage 1 : Runtime (Spring Boot + optional JavaFX) ---------
+# A minimal Temurin JRE image *that actually exists* on Docker Hub
+FROM eclipse-temurin:17-jre-slim AS runtime
 
-# Install necessary packages for headless operation
+LABEL org.opencontainers.image.source="https://github.com/your/repo" \
+      description="Blockchain Voting System – Spring Boot backend + optional JavaFX client"
+
+# ---- JavaFX & headless requirements ----
+#   • openjfx – runtime modules
+#   • xvfb   – virtual framebuffer so JavaFX can initialise without a display
+#   • common native libs for GTK / Mesa / fonts
 RUN apt-get update && \
-    apt-get install -y \
-    xvfb \
-    libxext6 \
-    libxrender1 \
-    libxtst6 \
-    libxi6 \
-    libxrandr2 \
-    libasound2 \
-    fontconfig \
-    && rm -rf /var/lib/apt/lists/*
+    apt-get install -y --no-install-recommends \
+        openjfx \
+        xvfb \
+        libgtk-3-0 \
+        libgl1-mesa-glx \
+        libasound2 \
+        fontconfig && \
+    rm -rf /var/lib/apt/lists/*
 
-# Set environment variables for headless operation
-ENV JAVA_OPTS="-Djava.awt.headless=true -Xmx512m -Xms256m"
-ENV SPRING_PROFILES_ACTIVE=production
-
-# Create app user
-RUN groupadd -r appuser && useradd -r -g appuser appuser
-
-# Set working directory
-WORKDIR /app
-
-# Copy the built JAR from builder stage
-COPY --from=builder /app/target/*.jar app.jar
-
-# Change ownership to appuser
-RUN chown -R appuser:appuser /app
-
-# Switch to non-root user
+# Non-root user for security
+RUN useradd -ms /bin/bash appuser
 USER appuser
 
-# Expose port
+WORKDIR /app
+
+# Copy the fat-jar from the build stage
+COPY --from=builder /workspace/target/*.jar app.jar
+
+# Environment
+ENV PORT=8080 \
+    SPRING_PROFILES_ACTIVE=production \
+    JAVA_OPTS="-Djava.awt.headless=true -Xmx512m -Xms256m"
+
 EXPOSE 8080
 
-# Health check
+# Healthcheck for Render
 HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
-    CMD curl -f http://localhost:8080/api/voting/health || exit 1
+  CMD curl -f http://localhost:${PORT}/api/voting/health || exit 1
 
-# Start the application
-ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]
+# ---- Final command ----
+# If JavaFX classes are present they will initialise under Xvfb; otherwise it runs purely headless.
+ENTRYPOINT ["sh","-c","xvfb-run -s '-screen 0 1024x768x24' java $JAVA_OPTS -jar app.jar"]
 
 # Stage 3: Runtime stage for JavaFX client (optional)
 FROM openjdk:17-jre-slim as javafx-client
@@ -84,7 +82,7 @@ RUN apt-get update && \
 WORKDIR /app
 
 # Copy the built JAR
-COPY --from=builder /app/target/*.jar app.jar
+COPY --from=builder /workspace/target/*.jar app.jar
 
 # Expose JavaFX port (if needed)
 EXPOSE 8080
