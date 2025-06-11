@@ -24,7 +24,8 @@
         <javafx.version>17</javafx.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <javafx.platform>${os.detected.classifier}</javafx.platform>
+        <!-- Default platform, will be overridden by os-maven-plugin -->
+        <javafx.platform>linux</javafx.platform>
     </properties>
 
     <dependencies>
@@ -51,26 +52,42 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- JavaFX Dependencies -->
+        <!-- JavaFX Dependencies with platform classifiers -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>${javafx.version}</version>
+            <classifier>${javafx.platform}</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>${javafx.version}</version>
+            <classifier>${javafx.platform}</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-web</artifactId>
             <version>${javafx.version}</version>
+            <classifier>${javafx.platform}</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-swing</artifactId>
             <version>${javafx.version}</version>
+            <classifier>${javafx.platform}</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-base</artifactId>
+            <version>${javafx.version}</version>
+            <classifier>${javafx.platform}</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>${javafx.version}</version>
+            <classifier>${javafx.platform}</classifier>
         </dependency>
 
         <!-- UI Enhancement Libraries -->
@@ -123,12 +140,39 @@
     </dependencies>
 
     <build>
+        <extensions>
+            <!-- OS Maven Plugin Extension for better platform detection -->
+            <extension>
+                <groupId>kr.motd.maven</groupId>
+                <artifactId>os-maven-plugin</artifactId>
+                <version>1.7.0</version>
+            </extension>
+        </extensions>
+        
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <mainClass>com.example.blockchainvoting.BlockchainVotingApplication</mainClass>
+                </configuration>
+            </plugin>
+            
+            <!-- OS Detection Plugin - must be first -->
+            <plugin>
+                <groupId>kr.motd.maven</groupId>
+                <artifactId>os-maven-plugin</artifactId>
+                <version>1.7.0</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>detect</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <classifierWithLikes>fedora-like,rhel-like</classifierWithLikes>
                 </configuration>
             </plugin>
             
@@ -155,43 +199,73 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <!-- Add os-maven-plugin for platform detection -->
-            <plugin>
-                <groupId>kr.motd.maven</groupId>
-                <artifactId>os-maven-plugin</artifactId>
-                <version>1.7.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>detect</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
     <profiles>
+        <!-- Platform-specific profiles for JavaFX -->
+        <profile>
+            <id>linux</id>
+            <activation>
+                <os>
+                    <family>unix</family>
+                    <name>linux</name>
+                </os>
+            </activation>
+            <properties>
+                <javafx.platform>linux</javafx.platform>
+            </properties>
+        </profile>
+        
+        <profile>
+            <id>windows</id>
+            <activation>
+                <os>
+                    <family>windows</family>
+                </os>
+            </activation>
+            <properties>
+                <javafx.platform>win</javafx.platform>
+            </properties>
+        </profile>
+        
+        <profile>
+            <id>mac</id>
+            <activation>
+                <os>
+                    <family>mac</family>
+                </os>
+            </activation>
+            <properties>
+                <javafx.platform>mac</javafx.platform>
+            </properties>
+        </profile>
+        
         <!-- Backend-only profile for Render deployment -->
         <profile>
             <id>backend-only</id>
             <properties>
                 <maven.test.skip>true</maven.test.skip>
+                <javafx.platform>linux</javafx.platform>
             </properties>
             <build>
                 <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>3.11.0</version>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/VotingApp.java</exclude>
+                                <exclude>**/JavaFXVotingApp.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
                     <plugin>
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-maven-plugin</artifactId>
                         <configuration>
                             <mainClass>com.example.blockchainvoting.BlockchainVotingApplication</mainClass>
-                            <excludes>
-                                <exclude>
-                                    <groupId>org.openjfx</groupId>
-                                    <artifactId>*</artifactId>
-                                </exclude>
-                            </excludes>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -201,6 +275,9 @@
         <!-- JavaFX profile for desktop client -->
         <profile>
             <id>javafx</id>
+            <properties>
+                <javafx.platform>${os.detected.classifier}</javafx.platform>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
