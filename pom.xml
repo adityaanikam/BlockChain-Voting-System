@@ -4,7 +4,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-<<<<<<< HEAD
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -12,13 +11,10 @@
         <relativePath/>
     </parent>
 
-=======
->>>>>>> 8182c09528479f3a460c27028fa1c3125e8e78aa
     <groupId>com.example</groupId>
     <artifactId>BlockChainVoting</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>Block Chain Voting</name>
-<<<<<<< HEAD
     <description>Blockchain-based voting system with JavaFX frontend and Spring Boot backend</description>
 
     <properties>
@@ -59,50 +55,24 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>${javafx.version}</version>
-=======
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <junit.version>5.10.0</junit.version>
-    </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-controls</artifactId>
-            <version>21</version>
->>>>>>> 8182c09528479f3a460c27028fa1c3125e8e78aa
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-<<<<<<< HEAD
             <version>${javafx.version}</version>
-=======
-            <version>21</version>
->>>>>>> 8182c09528479f3a460c27028fa1c3125e8e78aa
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-web</artifactId>
-<<<<<<< HEAD
             <version>${javafx.version}</version>
-=======
-            <version>21</version>
->>>>>>> 8182c09528479f3a460c27028fa1c3125e8e78aa
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-swing</artifactId>
-<<<<<<< HEAD
             <version>${javafx.version}</version>
         </dependency>
 
         <!-- UI Enhancement Libraries -->
-=======
-            <version>21</version>
-        </dependency>
->>>>>>> 8182c09528479f3a460c27028fa1c3125e8e78aa
         <dependency>
             <groupId>org.controlsfx</groupId>
             <artifactId>controlsfx</artifactId>
@@ -124,7 +94,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-<<<<<<< HEAD
 
         <!-- JSON Processing -->
         <dependency>
@@ -138,8 +107,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-=======
->>>>>>> 8182c09528479f3a460c27028fa1c3125e8e78aa
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -157,7 +124,6 @@
     <build>
         <plugins>
             <plugin>
-<<<<<<< HEAD
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
@@ -166,59 +132,38 @@
             </plugin>
             
             <plugin>
-=======
->>>>>>> 8182c09528479f3a460c27028fa1c3125e8e78aa
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
-<<<<<<< HEAD
                     <source>17</source>
                     <target>17</target>
                 </configuration>
             </plugin>
             
-=======
-                    <source>21</source>
-                    <target>21</target>
-                </configuration>
-            </plugin>
->>>>>>> 8182c09528479f3a460c27028fa1c3125e8e78aa
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <executions>
                     <execution>
-<<<<<<< HEAD
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>com.example.blockchainvoting.JavaFXVotingApp</mainClass>
-=======
-                        <!-- Default configuration for running with: mvn clean javafx:run -->
-                        <id>default-cli</id>
-                        <configuration>
-                            <mainClass>com.example.blockchainvoting/com.example.blockchainvoting.HelloApplication
-                            </mainClass>
->>>>>>> 8182c09528479f3a460c27028fa1c3125e8e78aa
-                            <launcher>app</launcher>
-                            <jlinkZipName>app</jlinkZipName>
-                            <jlinkImageName>app</jlinkImageName>
-                            <noManPages>true</noManPages>
-                            <stripDebug>true</stripDebug>
-                            <noHeaderFiles>true</noHeaderFiles>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
-<<<<<<< HEAD
 
     <profiles>
-        <!-- Profile for backend-only deployment (Render) -->
+        <!-- Backend-only profile for Render deployment -->
         <profile>
             <id>backend-only</id>
+            <properties>
+                <maven.test.skip>true</maven.test.skip>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -238,14 +183,15 @@
             </build>
         </profile>
         
-        <!-- Profile for JavaFX client deployment -->
+        <!-- JavaFX profile for desktop client -->
         <profile>
-            <id>javafx-client</id>
+            <id>javafx</id>
             <build>
                 <plugins>
                     <plugin>
                         <groupId>org.openjfx</groupId>
                         <artifactId>javafx-maven-plugin</artifactId>
+                        <version>0.0.8</version>
                         <configuration>
                             <mainClass>com.example.blockchainvoting.JavaFXVotingApp</mainClass>
                         </configuration>
@@ -254,6 +200,5 @@
             </build>
         </profile>
     </profiles>
-=======
->>>>>>> 8182c09528479f3a460c27028fa1c3125e8e78aa
-</project>
+
+</project> 
