@@ -21,8 +21,8 @@ ARG MAVEN_PROFILE=backend-only
 RUN ./mvnw -B clean package -P ${MAVEN_PROFILE} -DskipTests
 
 # -------- Stage 1 : Runtime (Spring Boot + optional JavaFX) ---------
-# A minimal Temurin JRE image *that actually exists* on Docker Hub
-FROM eclipse-temurin:17-jre-slim AS runtime
+# Using Ubuntu-based Temurin image that exists and supports apt-get
+FROM eclipse-temurin:17-jre-jammy AS runtime
 
 LABEL org.opencontainers.image.source="https://github.com/adityaanikam/BlockChain-Voting-System" \
       description="Blockchain Voting System – Spring Boot backend + optional JavaFX client"
@@ -38,7 +38,8 @@ RUN apt-get update && \
         libgtk-3-0 \
         libgl1-mesa-glx \
         libasound2 \
-        fontconfig && \
+        fontconfig \
+        curl && \
     rm -rf /var/lib/apt/lists/*
 
 # Non-root user for security
@@ -66,7 +67,7 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
 ENTRYPOINT ["sh","-c","xvfb-run -s '-screen 0 1024x768x24' java $JAVA_OPTS -jar app.jar"]
 
 # -------- Stage 2: Runtime stage for JavaFX client (optional) -------
-FROM eclipse-temurin:17-jre-slim AS javafx-client
+FROM eclipse-temurin:17-jre-jammy AS javafx-client
 
 # Install JavaFX runtime dependencies
 RUN apt-get update && \
