@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🗳️ Blockchain Voting System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 25px;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        .btn-success {
+            background: linear-gradient(45deg, #56ab2f, #a8e6cf);
+            border: none;
+            border-radius: 25px;
+            padding: 12px 30px;
+            font-weight: 600;
+        }
+        .btn-danger {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            border: none;
+            border-radius: 25px;
+            padding: 12px 30px;
+            font-weight: 600;
+        }
+        .form-control {
+            border-radius: 15px;
+            border: 2px solid #e9ecef;
+            padding: 12px 20px;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
+        }
+        .blockchain-icon {
+            font-size: 4rem;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        .stats-card {
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 10px 0;
+        }
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .alert {
+            border-radius: 15px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <!-- Header -->
+        <div class="text-center mb-5">
+            <i class="fas fa-vote-yea blockchain-icon"></i>
+            <h1 class="display-4 fw-bold text-white mb-3">Blockchain Voting System</h1>
+            <p class="lead text-white-50">Secure, Transparent, Immutable</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <!-- Main Voting Card -->
+            <div class="col-lg-6 col-md-8">
+                <div class="card">
+                    <div class="card-header bg-transparent text-center py-4">
+                        <h3 class="mb-0"><i class="fas fa-ballot-check text-primary me-2"></i>Cast Your Vote</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <form id="votingForm">
+                            <div class="mb-4">
+                                <label for="voterId" class="form-label fw-bold">
+                                    <i class="fas fa-id-card me-2"></i>Voter ID
+                                </label>
+                                <input type="text" class="form-control" id="voterId" 
+                                       placeholder="Enter your Voter ID (e.g., VOTER123)" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="candidate" class="form-label fw-bold">
+                                    <i class="fas fa-users me-2"></i>Choose Candidate
+                                </label>
+                                <select class="form-control" id="candidate" required>
+                                    <option value="">Select a candidate...</option>
+                                    <option value="Candidate A">🔵 Candidate A</option>
+                                    <option value="Candidate B">🔴 Candidate B</option>
+                                    <option value="Candidate C">🟢 Candidate C</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 py-3">
+                                <i class="fas fa-vote-yea me-2"></i>Cast Vote
+                            </button>
+                        </form>
+
+                        <div class="loading">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <p class="mt-2">Processing your vote...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Registration Card -->
+                <div class="card mt-4">
+                    <div class="card-header bg-transparent text-center py-3">
+                        <h5 class="mb-0"><i class="fas fa-user-plus text-success me-2"></i>Voter Registration</h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <form id="registrationForm">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" id="newVoterId" 
+                                       placeholder="Enter new Voter ID" required>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100">
+                                <i class="fas fa-user-check me-2"></i>Register Voter
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics and Controls -->
+            <div class="col-lg-6 col-md-8 mt-4 mt-lg-0">
+                <!-- Blockchain Status -->
+                <div class="card mb-4">
+                    <div class="card-header bg-transparent text-center py-3">
+                        <h5 class="mb-0"><i class="fas fa-link text-warning me-2"></i>Blockchain Status</h5>
+                    </div>
+                    <div class="card-body p-4 text-center">
+                        <div id="blockchainStatus" class="mb-3">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-danger" onclick="checkBlockchain()">
+                            <i class="fas fa-search me-2"></i>Verify Blockchain
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Voting Results -->
+                <div class="card mb-4">
+                    <div class="card-header bg-transparent text-center py-3">
+                        <h5 class="mb-0"><i class="fas fa-chart-bar text-info me-2"></i>Live Results</h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <div id="votingResults">
+                            <div class="text-center">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-info w-100 mt-3" onclick="loadResults()">
+                            <i class="fas fa-sync-alt me-2"></i>Refresh Results
+                        </button>
+                    </div>
+                </div>
+
+                <!-- System Info -->
+                <div class="stats-card">
+                    <h6><i class="fas fa-info-circle me-2"></i>System Information</h6>
+                    <p class="mb-1"><strong>Security:</strong> SHA-256 Encryption</p>
+                    <p class="mb-1"><strong>Consensus:</strong> Proof of Work</p>
+                    <p class="mb-0"><strong>Network:</strong> Decentralized</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Container -->
+    <div id="alertContainer" class="position-fixed" style="top: 20px; right: 20px; z-index: 1050;"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html> 

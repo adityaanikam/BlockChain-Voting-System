@@ -1,0 +1,63 @@
+server:
+  port: ${PORT:8080}
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: blockchain-voting-system
+  
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:default}
+  
+  # H2 Database Configuration
+  datasource:
+    url: jdbc:h2:mem:voting_db
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  # Security Configuration
+  security:
+    user:
+      name: admin
+      password: admin123
+      roles: USER,ADMIN
+
+# Logging Configuration
+logging:
+  level:
+    com.example.blockchainvoting: INFO
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+# Custom Application Properties
+blockchain:
+  mining:
+    difficulty: 4
+  voting:
+    max-votes-per-user: 1
+    enable-validation: true
+
+# Render Deployment Configuration
+render:
+  health-check:
+    enabled: true
+    path: /api/voting/health 

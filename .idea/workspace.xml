@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2ff820fa-3123-43be-a692-a79961f5929c" name="Changes" comment="block chain system first commit" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="JavaFXApplication" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="recentNewPullRequestHead">
+      <RepoCoordinatesHolder>
+        <option name="owner" value="adityaanikam" />
+        <option name="repository" value="BlockChain-Voting-System" />
+      </RepoCoordinatesHolder>
+    </option>
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="02656969-de5b-4029-98eb-b179ac7122f2" />
+        <option name="url" value="https://github.com/adityaanikam/BlockChain-Voting-System.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">
+    <option name="associatedIndex" value="6" />
+  </component>
+  <component name="ProjectId" id="2lQrxfwMALbNvw6kTsZCwrWFHYr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <option name="keyToString">
+      <map>
+        <entry key="Application.VotingApp.executor" value="Run" />
+        <entry key="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+        <entry key="RunOnceActivity.ShowReadmeOnStart" value="true" />
+        <entry key="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+        <entry key="git-widget-placeholder" value="master" />
+        <entry key="kotlin-language-version-configured" value="true" />
+      </map>
+    </option>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2ff820fa-3123-43be-a692-a79961f5929c" name="Changes" comment="" />
+      <created>1725123389232</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1725123389232</updated>
+    </task>
+    <task id="LOCAL-00001" summary="block chain system first commit">
+      <option name="closed" value="true" />
+      <created>1725881041955</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1725881041955</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="block chain system first commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="block chain system first commit" />
+  </component>
+</project>

@@ -1,0 +1,53 @@
+services:
+  - type: web
+    name: blockchain-voting-backend
+    env: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    dockerCommand: --target backend
+    
+    # Environment variables
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: production
+      - key: JAVA_OPTS
+        value: "-Djava.awt.headless=true -Xmx512m -Xms256m"
+      - key: PORT
+        value: 8080
+    
+    # Health check configuration
+    healthCheckPath: /api/voting/health
+    
+    # Auto-deploy configuration
+    autoDeploy: true
+    
+    # Build configuration
+    buildFilter:
+      paths:
+      - src/**
+      - pom.xml
+      - Dockerfile
+      ignoredPaths:
+      - README.md
+      - docs/**
+      - "*.md"
+
+databases: []
+
+# Optional: Web service for JavaFX client (commented out for backend-only deployment)
+# - type: web
+#   name: blockchain-voting-client
+#   env: docker
+#   plan: starter
+#   dockerfilePath: ./Dockerfile
+#   dockerContext: .
+#   dockerCommand: --target javafx-client
+#   
+#   envVars:
+#     - key: DISPLAY
+#       value: ":99"
+#     - key: BACKEND_URL
+#       from: service
+#       name: blockchain-voting-backend
+#       property: host 
